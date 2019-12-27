@@ -1,0 +1,131 @@
+<div id="routingView" class="container-fluid">
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-6">
+			<div class="panel {{theme.panel}}">
+
+					<div class="panel-heading" ng-model="collapseSel" ng-click="collapseSel=!collapseSel">
+							Exploded BOM
+					</div>
+					
+					<table class="inlineTable">
+							<tr class="h5-color-graphite">
+								<td><h5>Final MO #</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.explodedBOM.finalMO" name="finalMo"> </td>
+							</tr>
+							<tr class="h5-color-graphite">
+								<td><h5>Facility</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.explodedBOM.facility" name="facility" disabled> </td>
+
+								<td><button type="button" class= "h5Button" ng-click="AppCtrl.createRoutingSheet()">Create Routing Sheet</button></td>
+
+							</tr>
+							<tr class="h5-color-graphite">
+								<td><h5>Structure Type</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.explodedBOM.structureType" name="structureType" disabled> </td>
+							</tr>
+							<tr class="h5-color-graphite">
+								<td><h5>Final Product #</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.explodedBOM.finalProduct" name="finalProduct" disabled> </td>
+							</tr>
+					</table>
+
+					<div id="Lines">
+						<div class="panel {{theme.panel}}">
+							<div id="explodedBomGrid" ui-grid="routing.explodedBomGrid" ng-class="theme.h5Grid" class="h5Grid"
+								ui-grid-selection ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-cellNav ui-grid-exporter ui-grid-save-state ui-grid-edit ui-grid-pinning></div>
+							<div style="clear: both"></div>
+						</div>
+					</div>
+			</div>
+
+		</div>
+
+		<div class="col-xs-6 col-sm-6 col-md-6">
+			<div class="panel {{theme.panel}}">
+
+					<div class="panel-heading" ng-model="collapseSel" ng-click="collapseSel=!collapseSel">
+							Open MOs
+					</div>
+					<table class="inlineTable">
+							<tr class="h5-color-graphite">
+								<td><h5>Facility</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.openMos.facility" name="MOfacility" disabled> </td>
+							</tr>
+							<tr class="h5-color-graphite">
+								<td><h5>Product</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.openMos.product" name="MOproduct" disabled> </td>
+							</tr>
+					</table>
+
+					<div id="Lines">
+						<div class="panel {{theme.panel}}">
+							<div id="openMOsGrid" ui-grid="routing.openMOsGrid" ng-class="theme.h5Grid" class="h5Grid"
+								ui-grid-selection ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-cellNav ui-grid-exporter ui-grid-save-state ui-grid-edit ui-grid-pinning></div>
+							<div style="clear: both"></div>
+						</div>
+					</div>
+
+					<span>
+						<button type="button" class= "h5Button" ng-click="AppCtrl.addToRoutingSheet()">Add To Routing Sheet</button>
+					</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="panel {{theme.panel}}">
+					<div class="panel-heading" ng-model="collapseSel" ng-click="collapseSel=!collapseSel">
+							Routing Sheet
+					</div>
+					
+					<table class="inlineTable">
+							<tr class="h5-color-graphite">
+								<td><h5>Facility</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.routingSheet.facility" name="routingfacility" disabled> </td>
+
+								<td><h5>Routing Sheet #</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.routingSheet.routingSheetNumber" name="routingSheetNumber" ng-disabled="IsDisabled"> </td>
+								<td><button type="button" class= "h5Button" ng-click="AppCtrl.findRoutingSheet()">Find Routing Sheet</button></td>
+							</tr>
+							<tr class="h5-color-graphite">
+								<td><h5>Structure Type</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.routingSheet.structureType" name="routingstructureType" disabled> </td>
+							</tr>
+							<tr class="h5-color-graphite">
+								<td><h5>Final Product #</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.routingSheet.finalProduct" name="routingfinalProduct" disabled> </td>
+							</tr>
+							<tr class="h5-color-graphite">
+								<td><h5>Final MO #</h5></td>
+								<td><input type="text" class="form-control input-sm" ng-model="routing.routingSheet.finalMO" name="routingfinalMO" disabled> </td>
+							</tr>
+					</table>
+
+					<div id="Lines">
+						<div class="panel {{theme.panel}}">
+							<div id="routingSheetGrid" ui-grid="routing.routingSheetGrid" ng-class="theme.h5Grid" class="h5Grid"
+								ui-grid-selection ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-cellNav ui-grid-exporter ui-grid-save-state ui-grid-edit ui-grid-pinning></div>
+							<div style="clear: both"></div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-4 col-sm-4 col-md-4">
+							<span>
+								<button type="button" class= "h5Button" ng-click="AppCtrl.deleteLines()">Delete Line(s)</button>
+							</span>
+						</div>
+						<div class="col-xs-8 col-sm-8 col-md-8">
+							<span>
+								<button type="button" class= "h5Button" ng-click="AppCtrl.printRoutingSheet()">Print Routing Sheet</button>
+							</span>
+						</div>
+					</div>
+
+				</div>
+		</div>
+	</div>
+</div>
+
+

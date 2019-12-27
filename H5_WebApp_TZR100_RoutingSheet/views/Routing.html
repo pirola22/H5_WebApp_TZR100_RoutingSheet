@@ -1,0 +1,245 @@
+<div id="routingView" class="container-fluid">
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-6">
+			<div class="panel {{theme.panel}}">
+
+				<div class="panel-heading" ng-model="collapseSel"
+					ng-click="collapseSel=!collapseSel">Exploded BOM</div>
+
+				<table class="inlineTable">
+
+					<tr class="h5-color-graphite">
+						<td><h5>Final Product #</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.explodedBOM.finalProduct" name="finalProduct"></td>
+
+						<td><button type="button" class="h5Button"
+								ng-click="AppCtrl.browseFinalProduct()">Browse</button></td>
+					</tr>
+
+					<tr class="h5-color-graphite">
+						<td><h5>Facility</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.explodedBOM.facility" name="facility" disabled>
+						</td>
+
+						<td><button type="button" class="h5Button"
+								ng-click="AppCtrl.createRoutingSheet()">Create Routing
+								Sheet</button></td>
+
+						<td>
+							<button type="button" class="h5Button"
+								ng-click="AppCtrl.clearPage()">Clear</button>
+						</td>
+
+					</tr>
+					<tr class="h5-color-graphite">
+						<td><h5>Structure Type</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.explodedBOM.structureType" name="structureType"
+							disabled></td>
+					</tr>
+					<tr class="h5-color-graphite">
+						<td><h5>Final MO #</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.explodedBOM.finalMO" name="finalMo" disabled></td>
+						<td></td>
+					</tr>
+
+				</table>
+
+				<div id="Lines">
+					<div class="panel {{theme.panel}}">
+						<div id="explodedBomGrid" ui-grid="routing.explodedBomGrid"
+							ng-class="theme.h5Grid" class="h5Grid" ui-grid-selection
+							ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize
+							ui-grid-cellNav ui-grid-exporter ui-grid-save-state ui-grid-edit
+							ui-grid-pinning></div>
+						<div style="clear: both"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-xs-6 col-sm-6 col-md-6">
+			<div class="panel {{theme.panel}}">
+
+				<div class="panel-heading" ng-model="collapseSel"
+					ng-click="collapseSel=!collapseSel">Open MOs</div>
+				<table class="inlineTable">
+					<tr class="h5-color-graphite">
+						<td><h5>Facility</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.openMos.facility" name="MOfacility" disabled>
+						</td>
+					</tr>
+					<tr class="h5-color-graphite">
+						<td><h5>Product</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.openMos.product" name="MOproduct" disabled>
+						</td>
+					</tr>
+				</table>
+
+				<div id="Lines">
+					<div class="panel {{theme.panel}}">
+						<div id="openMOsGrid" ui-grid="routing.openMOsGrid"
+							ng-class="theme.h5Grid" class="h5Grid" ui-grid-selection
+							ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize
+							ui-grid-cellNav ui-grid-exporter ui-grid-save-state ui-grid-edit
+							ui-grid-pinning></div>
+						<div style="clear: both"></div>
+					</div>
+				</div>
+
+				<span>
+					<button type="button" class="h5Button"
+						ng-click="AppCtrl.addToRoutingSheet()">Add To Routing
+						Sheet</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="panel {{theme.panel}}">
+				<div class="panel-heading" ng-model="collapseSel"
+					ng-click="collapseSel=!collapseSel">Routing Sheet</div>
+
+				<table class="inlineTable">
+					<tr class="h5-color-graphite">
+						<td><h5>Facility</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.routingSheet.facility" name="routingfacility"
+							disabled></td>
+
+						<td><h5>Routing Sheet #</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.routingSheet.routingSheetNumber"
+							name="routingSheetNumber" ng-disabled="IsDisabled"></td>
+						<td><button type="button" class="h5Button"
+								ng-click="AppCtrl.findRoutingSheet()">Find Routing
+								Sheet</button></td>
+					</tr>
+					<tr class="h5-color-graphite">
+						<td><h5>Structure Type</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.routingSheet.structureType"
+							name="routingstructureType" disabled></td>
+					</tr>
+					<tr class="h5-color-graphite">
+						<td><h5>Final Product #</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.routingSheet.finalProduct"
+							name="routingfinalProduct" disabled></td>
+					</tr>
+					<tr class="h5-color-graphite">
+						<td><h5>Final MO #</h5></td>
+						<td><input type="text" class="form-control input-sm"
+							ng-model="routing.routingSheet.finalMO" name="routingfinalMO"
+							disabled></td>
+					</tr>
+					<tr>
+						<td>
+							<button type="button" class="h5Button"
+								ng-show="routing.routingSheet.isOpen"
+								ng-click="AppCtrl.deleteAllLines()">Clear Routing List</button>
+						</td>
+						<td>
+							<button type="button" class="h5Button"
+								ng-show="routing.routingSheet.isOpen"
+								ng-click="AppCtrl.deleteLines()">Delete Line(s)</button>
+						</td>
+					</tr>
+
+				</table>
+
+				<div id="Lines">
+					<div class="panel {{theme.panel}}">
+						<div id="routingSheetGrid" ui-grid="routing.routingSheetGrid"
+							ng-class="theme.h5Grid" class="h5Grid" ui-grid-selection
+							ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize
+							ui-grid-cellNav ui-grid-exporter ui-grid-save-state ui-grid-edit
+							ui-grid-pinning></div>
+						<div style="clear: both"></div>
+					</div>
+				</div>
+
+
+				<table class="inlineTable">
+					<tr>
+						<td><h5>{{::languageConstants.get('Number of copies')}}</h5></td>
+						<td>:</td>
+						<td><input name="numberOfCopies" type="number"
+							class="h5-input-sm"
+							ng-model="routing.routingSheet.numberOfCopies" name=""
+							title="Number of Copies]" min="1" max="100" step="1"
+							onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+							style="text-align: right" required></td>
+					</tr>
+					<tr>
+					<tr>
+						<td>
+							<h5>{{::languageConstants.get('Printer')}}</h5>
+						</td>
+						<td>:</td>
+						<td><span> <ui-select name="printer"
+									class="h5-input-md {{theme.h5Dropdown}}"
+									ng-model="routing.printerSetup.printers.selected"
+									theme="bootstrap"> <ui-select-match
+									placeholder="Select Printer">{{$select.selected.DEV
+								+ ' - ' + $select.selected.TX40}}</ui-select-match> <ui-select-choices
+									repeat="printers.DEV as printers in routing.printerSetup.printers | filter: $select.search track by printers.DEV">
+								<span ng-bind-html="printers.DEV | highlight: $select.search"></span>
+								- <small
+									ng-bind-html="printers.TX40 | highlight: $select.search"></small></ui-select>
+						</span></td>
+
+						<td>
+							<div class="col-xs-8 col-sm-8 col-md-8">
+								<span>
+									<button type="button" class="h5Button"
+										ng-click="AppCtrl.printRoutingSheet()">Print Routing
+										Sheet</button>
+								</span>
+							</div>
+						</td>
+					</tr>
+
+				</table>
+				<table class="inlineTable">
+					<tr>
+						<td>
+							<h5>Update Print File</h5>
+						</td>
+						<td>:</td>
+						<td><input name="updatePrintFile" type="checkbox"
+							ng-model="routing.printerSetup.updatePrintFile"></td>
+					</tr>
+					<tr>
+						<td>
+							<h5>Send Email</h5>
+						</td>
+						<td>:</td>
+						<td><input name="updatePrintFile" type="checkbox"
+							ng-model="routing.sendEmail"></td>
+					</tr>
+					<tr>
+						<td>
+							<h5>Download XML</h5>
+						</td>
+						<td>:</td>
+						<td><input name="updatePrintFile" type="checkbox"
+							ng-model="routing.downloadXML"></td>
+					</tr>
+				</table>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
