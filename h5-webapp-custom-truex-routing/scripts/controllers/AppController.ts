@@ -3,7 +3,7 @@
  * Functions and models shared across one or more modules should be implemented here. 
  * For independent modules create module specific controllers and declare it as a nested controller, i.e under the module specific page.
  */
-
+//git test
 
 module h5.application {
 
