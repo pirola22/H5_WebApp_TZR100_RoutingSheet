@@ -1,0 +1,19 @@
+{
+	"name": "H5WebApplication",
+	"description": "A H5 Web Application runs on Infor's M3 Grid Application(H5 Client) or runs on a node.js web HTTP server.",
+	"version": "1.0.0",
+	"main": "dev-web-server.js",
+	"dependencies": {
+		"angular-file-saver": "^1.1.3",
+		"connect": "*",
+		"file-saver": "^2.0.2",
+		"recursive-copy": "*",
+		"serve-static": "*",
+		"zip-dir": "*"
+	},
+	"engines": {
+		"node": "0.10.*"
+	},
+	"license": "http://leanswift.com/leanswift-eula/",
+	"private": true
+}

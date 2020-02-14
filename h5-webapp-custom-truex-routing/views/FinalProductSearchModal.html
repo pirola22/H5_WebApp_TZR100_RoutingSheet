@@ -1,0 +1,50 @@
+<div class="modal-header">
+	<button type="button" class="close"
+		ng-click="AppCtrl.closeModalWindow()">&times;</button>
+	<h4 class="modal-title">Final Product Search</h4>
+</div>
+<div class="modal-body">
+	<div class="panel {{theme.panel}}">
+
+		<form name="submitForm" novalidate>
+			<table class="inlineTable">
+				<tr class="h5-color-graphite">
+					<td><h5>Facility</h5></td>
+					<td><input type="text" class="form-control input-sm"
+						ng-model="routing.finalProductSearch.facility" name="facility">
+					</td>
+				</tr>
+				<tr class="h5-color-graphite">
+					<td><h5>Final Product #</h5></td>
+					<td><input type="text" class="form-control input-sm"
+						ng-model="routing.finalProductSearch.finalProduct"
+						name="finalProduct" autofocus></td>
+						<td><button type="submit" class="h5Button"
+							ng-click="AppCtrl.searchFinalProduct()">Search</button></td>
+
+				</tr>
+				<tr class="h5-color-graphite" hidden>
+					<td><h5>MO From Status</h5></td>
+					<td><input type="text" class="form-control input-sm"
+						ng-model="routing.finalProductSearch.moFromStatus"
+						name="moFromStatus" readonly ></td>
+				</tr>
+				<tr class="h5-color-graphite" hidden>
+					<td><h5>MO To Status</h5></td>
+					<td><input type="text" class="form-control input-sm"
+						ng-model="routing.finalProductSearch.moToStatus" 
+						name="moToStatus" readonly ></td>
+					
+				</tr>
+			</table>
+		</form>
+
+
+		<div id="finalProductSearchGrid"
+			ui-grid="routing.finalProductSearchGrid" ng-class="theme.h5Grid"
+			class="h5ModelGrid" ui-grid-selection ui-grid-resize-columns
+			ui-grid-move-columns ui-grid-auto-resize ui-grid-cellNav
+			ui-grid-exporter></div>
+
+	</div>
+</div>
